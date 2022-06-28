@@ -1,46 +1,48 @@
-# Advanced Sample Hardhat Project
+# FundMe Smart Contract Using Hardhart
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+This is  demonstrations of simple smart contract written on Solidity programming language. This code is written while following the free course on Solidity by Patrick Collions.
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
+This project is developed with `hardhat` framework using `TypeScript`. This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
 
-Try running some of the following tasks:
+## FundMe
+All the smart contracts are written inside `/contracts` folder. The FundMe smart contract allow the contract owner to collect fund from different funders. It also allow to withdraw fund by the owner or deployer.
 
+I have used chainlink to get the ETH price so that funders sent at least minimum amount of ETH. 
+
+All the test code is in `/test` folder. Deploy scripts are inside the `/deploy` folder.
+
+## Network
+We have tested the code in `localhost` and `hardhat` local network. For testnet we have used `rinkeby`. Make sure you have some ETH in your testnet network. You can get free testnet ETH on major testnet network by chainlink website. 
+
+## Running the code
+To run and test the code in your local development machine copy the repo with following command. We have used `yarn` package manager. You can use `NPM`.
 ```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.ts
-TS_NODE_FILES=true npx ts-node scripts/deploy.ts
-npx eslint '**/*.{js,ts}'
-npx eslint '**/*.{js,ts}' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+git clone https://github.com/sanjaydefidev/hardhat-fund-me
+```
+Installing all the dependencies
+```shell
+yarn install
+```
+## Shell commands
+To comile the solidity.
+```shell
+yarn hardhat compile
 ```
 
-# Etherscan verification
-
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
-
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
-
+To deploy on testnet.
 ```shell
-hardhat run --network ropsten scripts/deploy.ts
+yarn hardhat deploy --network rinkeby
 ```
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
-
+To run the mocha tests.
 ```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
+yarn hardhat test
 ```
+To run the coverage of code.
+```shell
+yarn hardhat coverage
+```
+For futher detail of this tutorial [check this link](https://github.com/PatrickAlphaC/hardhat-fund-me-fcc).
 
-# Performance optimizations
-
-For faster runs of your tests and scripts, consider skipping ts-node's type checking by setting the environment variable `TS_NODE_TRANSPILE_ONLY` to `1` in hardhat's environment. For more details see [the documentation](https://hardhat.org/guides/typescript.html#performance-optimizations).
+## Note
+Thank you @PatrickAlphaC for creating such and awesome tutorial.
